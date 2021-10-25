@@ -10,8 +10,12 @@ const Content: React.FC<ContentProps> = (props) => {
     <>
       {props.anime.title && props.anime.image_url ? (
         <>
-          <h5>{props.anime.title}</h5>
-          <img src={props.anime.image_url} alt={props.anime.title} />
+          <h5 key={`${props.anime.title}+titulo`}>{props.anime.title}</h5>
+          <img
+            key={`${props.anime.title}+imagem`}
+            src={props.anime.image_url}
+            alt={props.anime.title}
+          />
         </>
       ) : null}
     </>

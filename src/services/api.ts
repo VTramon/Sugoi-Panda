@@ -4,7 +4,7 @@ import axios from 'axios'
 // http://localhost:3000
 
 const api = axios.create({
-  baseURL: 'https://api.jikan.moe/v3/search/anime?q=',
+  baseURL: 'https://api.jikan.moe/v3/',
 })
 
 export default api
