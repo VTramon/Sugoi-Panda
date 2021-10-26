@@ -26,7 +26,7 @@ export interface TopAnimesProps {
   }
 }
 
-const TopAnimes: React.FC<TopAnimesProps> = (props) => {
+const TopRecommendations: React.FC<TopAnimesProps> = (props) => {
   return (
     <>
       {props.anime.title && props.anime.image_url && props.anime.rank <= 12 ? (
@@ -43,4 +43,4 @@ const TopAnimes: React.FC<TopAnimesProps> = (props) => {
   )
 }
 
-export default TopAnimes
+export default TopRecommendations

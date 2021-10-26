@@ -17,6 +17,7 @@ const Image = styled.img`
 
 export interface ContentProps {
   anime: {
+    rank: number
     title?: string
     image_url?: string
   }
