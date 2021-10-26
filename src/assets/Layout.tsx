@@ -5,12 +5,15 @@ import Header from './Header'
 import Content from './SearchContent'
 import TopRecommendations from './TopRecommendations'
 
-const AnimeBox = styled.div`
-  margin: 50px 0;
+const AnimeBox = styled.section`
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
   width: 80vw;
-  height: 500px;
+  height: 540px;
+  margin: 50px 0;
   overflow: hidden;
   background-color: ${(props) => props.theme.dark.boxBackground};
 `
@@ -82,8 +85,8 @@ const Layout: React.FC<LayoutProps> = () => {
 
       <AnimeBox>
         {!!topMangas &&
-          topMangas.map((topMangas) => {
-            return <TopRecommendations anime={topMangas} />
+          topMangas.map((topMangas, index) => {
+            return <TopRecommendations anime={topMangas} key={index} />
           })}
       </AnimeBox>
     </StyledLayout>
