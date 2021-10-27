@@ -10,6 +10,24 @@ const StyledLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
+`
+
+const List = styled.ol`
+  list-style: none;
+  max-height: 500px;
+  overflow-y: scroll;
+  background-color: ${(props) => props.theme.dark.boxBackground};
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: ${(props) => props.theme.dark.boxBackground};
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.dark.headerBackground};
+  }
 `
 
 interface LayoutProps {
@@ -30,19 +48,37 @@ const Layout: React.FC<LayoutProps> = () => {
     })
   }
 
+  const closeListByClick = () => {
+    setAnimes([])
+  }
+
+  // const closeListByKey = (e: any) => {
+  //   setKey(e.key)
+  //   console.log(key)
+  // }
+
   useEffect(() => {
     if (search.length === 0) return
     handleGetSearch()
   }, [search])
 
   return (
-    <StyledLayout>
+    <StyledLayout
+      // onKeyPress={(e) => closeListByKey(e.key.substring)}
+      onClick={closeListByClick}
+    >
       <LayoutHeader />
       <SearchBar callbackSearch={setSearch} />
-      {!!animes &&
-        animes.map((anime, index) => {
-          return <Content key={index} anime={anime} />
-        })}
+      <List>
+        {animes &&
+          animes.map((anime, index) => {
+            return (
+              <li>
+                <Content key={index} anime={anime} />
+              </li>
+            )
+          })}
+      </List>
       <LayoutContent rank={0} />
     </StyledLayout>
   )
