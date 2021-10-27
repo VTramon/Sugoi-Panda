@@ -4,17 +4,20 @@ const Box = styled.a`
   display: flex;
   gap: 10;
   flex-flow: column wrap;
-  justify-content: center;
+  border-radius: 5px;
+  justify-content: flex-start;
   align-items: center;
   width: 165px;
-  height: 270px;
+  height: 48%;
+  margin: 10px;
   cursor: pointer;
   text-decoration: none;
+  background-color: ${(props) => props.theme.dark.cardBackground};
 `
 
 const Image = styled.img`
-  width: 130px;
-  height: 210px;
+  width: 100%;
+  /* height: 210px; */
   display: flex;
   object-fit: cover;
   height: 80%;
@@ -27,7 +30,7 @@ const Text = styled.p`
   width: fit-content;
   text-decoration: none;
   white-space: normal;
-  overflow: hidden;
+  /* overflow: hidden; */
   text-overflow: ellipsis;
   color: ${(props) => props.theme.dark.text};
 `
@@ -43,7 +46,7 @@ export interface TopAnimesProps {
 const TopRecommendations: React.FC<TopAnimesProps> = (props) => {
   return (
     <>
-      {props.anime.title && props.anime.image_url && props.anime.rank <= 18 ? (
+      {props.anime.title && props.anime.image_url && props.anime.rank <= 16 ? (
         <Box href="#">
           <Image
             key={`${props.anime.rank}+imagem`}

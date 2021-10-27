@@ -1,19 +1,22 @@
 import { useEffect, useState } from 'react'
+import Header from 'src/components/Header'
 import api from 'src/services/api'
 import styled from 'styled-components'
-import Header from './Header'
+import LayoutHeader from './LayoutHeader'
 import Content from './SearchContent'
 import TopRecommendations from './TopRecommendations'
 
 const AnimeBox = styled.section`
   display: flex;
   flex-flow: row wrap;
+  /* align-content: space-evenly;
+  justify-content: space-evenly; */
   justify-content: center;
   align-items: center;
   align-content: stretch;
   width: 80vw;
-  height: 540px;
-  margin: 50px 0;
+  height: 550px;
+  margin: 0 0 50px 0;
   overflow: hidden;
   background-color: ${(props) => props.theme.dark.boxBackground};
 `
@@ -71,11 +74,12 @@ const Layout: React.FC<LayoutProps> = () => {
 
   return (
     <StyledLayout>
-      <Header callbackSearch={setSearch} />
+      <LayoutHeader callbackSearch={setSearch} />
       {!!animes &&
         animes.map((anime, index) => {
           return <Content key={index} anime={anime} />
         })}
+      <Header title="Top animes" />
       <AnimeBox>
         {!!topAnimes &&
           topAnimes.map((topAnimes, index) => {
@@ -83,6 +87,7 @@ const Layout: React.FC<LayoutProps> = () => {
           })}
       </AnimeBox>
 
+      <Header title="Top mangas" />
       <AnimeBox>
         {!!topMangas &&
           topMangas.map((topMangas, index) => {

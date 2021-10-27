@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react'
 import Image from 'next/image'
-import styled from 'styled-components'
 import Panda from '../public/images/panda.svg'
+import styled from 'styled-components'
 
 const StyledHeader = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ const StyledHeader = styled.div`
   align-items: center;
   width: 100vw;
   height: 8vh;
-  background: ${(props) => props.theme.dark.headerBackground};
+  background: ${(props) => props.theme.dark.layoutHeaderBackground};
 `
 
 const Logo = styled.div`
@@ -33,11 +33,11 @@ const Input = styled.input`
   padding-left: 20px;
 `
 
-export interface HeaderProps {
+export interface LayoutHeaderProps {
   children?: any
   callbackSearch: Function
 }
-const Header: React.FC<HeaderProps> = ({ callbackSearch }) => {
+const LayoutHeader: React.FC<LayoutHeaderProps> = ({ callbackSearch }) => {
   const [search, setSearch] = useState('')
 
   const handleSubmit = async (event: FormEvent) => {
@@ -64,4 +64,4 @@ const Header: React.FC<HeaderProps> = ({ callbackSearch }) => {
   )
 }
 
-export default Header
+export default LayoutHeader
