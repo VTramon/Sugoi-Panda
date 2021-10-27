@@ -8,6 +8,7 @@ const StyledHeader = styled.div`
   height: 8vh;
   margin-top: 50px;
   padding-left: 50px;
+  border-radius: 15px 15px 0 0;
   background: ${(props) => props.theme.dark.headerBackground};
 `
 interface HeaderProps {

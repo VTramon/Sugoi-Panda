@@ -26,11 +26,11 @@ const Image = styled.img`
 
 const Text = styled.p`
   display: flex;
-  height: 20px;
+  height: 40px;
   width: fit-content;
   text-decoration: none;
   white-space: normal;
-  /* overflow: hidden; */
+  overflow: hidden;
   text-overflow: ellipsis;
   color: ${(props) => props.theme.dark.text};
 `
