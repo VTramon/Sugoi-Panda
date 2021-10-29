@@ -52,21 +52,13 @@ const Layout: React.FC<LayoutProps> = () => {
     setAnimes([])
   }
 
-  // const closeListByKey = (e: any) => {
-  //   setKey(e.key)
-  //   console.log(key)
-  // }
-
   useEffect(() => {
     if (search.length === 0) return
     handleGetSearch()
   }, [search])
 
   return (
-    <StyledLayout
-      // onKeyPress={(e) => closeListByKey(e.key.substring)}
-      onClick={closeListByClick}
-    >
+    <StyledLayout onClick={closeListByClick}>
       <LayoutHeader />
       <SearchBar callbackSearch={setSearch} />
       <List>

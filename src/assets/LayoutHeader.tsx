@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Panda from '../public/images/panda.svg'
 import styled from 'styled-components'
+import Link from 'next/link'
 
 const StyledHeader = styled.div`
   display: flex;
@@ -26,6 +27,9 @@ const LayoutHeader: React.FC = () => {
         <Image height={70} src={Panda} alt="sugoi panda" />
         <label>Sugoi Panda</label>
       </Logo>
+      <Link href="/single/2">
+        <a>index</a>
+      </Link>
     </StyledHeader>
   )
 }
