@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 
 const Box = styled.a`
@@ -37,6 +38,7 @@ const Text = styled.p`
 
 export interface TopAnimesProps {
   anime: {
+    mal_id?: number
     rank: number
     title?: string
     image_url?: string
@@ -47,14 +49,16 @@ const TopRecommendations: React.FC<TopAnimesProps> = (props) => {
   return (
     <>
       {props.anime.title && props.anime.image_url && props.anime.rank <= 16 ? (
-        <Box href="#">
-          <Image
-            key={`${props.anime.rank}+imagem`}
-            src={props.anime.image_url}
-            alt={props.anime.title}
-          />
-          <Text key={`${props.anime.rank}+titulo`}>{props.anime.title}</Text>
-        </Box>
+        <Link href={`/single/${props.anime.mal_id}`}>
+          <Box>
+            <Image
+              key={`${props.anime.rank}+imagem`}
+              src={props.anime.image_url}
+              alt={props.anime.title}
+            />
+            <Text key={`${props.anime.rank}+titulo`}>{props.anime.title}</Text>
+          </Box>
+        </Link>
       ) : null}
     </>
   )

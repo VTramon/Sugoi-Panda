@@ -27,7 +27,7 @@ const LayoutHeader: React.FC = () => {
         <Image height={70} src={Panda} alt="sugoi panda" />
         <label>Sugoi Panda</label>
       </Logo>
-      <Link href="/single/2">
+      <Link href="/single/40834">
         <a>index</a>
       </Link>
     </StyledHeader>

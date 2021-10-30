@@ -1,6 +1,6 @@
 import LayoutHeader from './LayoutHeader'
 
-interface AnimeProps {
+interface SingleAnimeProps {
   anime: {
     title?: string
     url?: string
@@ -9,7 +9,7 @@ interface AnimeProps {
   }
 }
 
-const SingleAnime: React.FC<AnimeProps> = (props) => {
+const SingleAnime: React.FC<SingleAnimeProps> = (props) => {
   return (
     <>
       <LayoutHeader />
