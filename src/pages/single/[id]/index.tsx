@@ -5,7 +5,6 @@ import SingleAnime from 'src/assets/SingleAnime'
 import { GetServerSideProps } from 'next'
 import VideoList from 'src/components/VideoList'
 import EpisodeList from 'src/components/EpisodeList'
-import useSWR from 'swr'
 
 interface AnimeProps {
   title?: string
