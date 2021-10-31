@@ -1,24 +1,63 @@
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import AnimeDetails from 'src/components/AmineDetails'
+import EpisodeList from 'src/components/EpisodeList'
+import VideoList from 'src/components/VideoList'
+import api from 'src/services/api'
+import styled from 'styled-components'
 import LayoutHeader from './LayoutHeader'
 
-interface SingleAnimeProps {
-  anime: {
-    title?: string
-    url?: string
-    image_url?: string
-    mal_id?: number
-  }
-}
+const SingleContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  width: 65vw;
+`
 
-const SingleAnime: React.FC<SingleAnimeProps> = (props) => {
+const SingleAnime: React.FC = (props) => {
+  const [single, setSingle] = useState({})
+  const [promo, setPromo] = useState([])
+  const [ep, setEp] = useState([])
+
+  const router = useRouter()
+  const { id } = router.query
+
+  const getVideos = async () => {
+    await api.get(`https://api.jikan.moe/v3/anime/${id}/videos`).then((res) => {
+      setPromo(res.data['promo'])
+      setEp(res.data['episodes'])
+    })
+  }
+
+  const onLoad = async () => {
+    await api.get(`https://api.jikan.moe/v3/anime/${id}`).then((res) => {
+      setSingle(res.data)
+    })
+  }
+
+  useEffect(() => {
+    onLoad()
+    getVideos()
+  }, [])
+
   return (
     <>
       <LayoutHeader />
-      <div>
-        <h1>{props.anime.title}</h1>
-        <img src={props.anime.image_url} alt={props.anime.title} />
-        <h2>Id = {props.anime.mal_id}</h2>
-        <h2>Url = {props.anime.url}</h2>
-      </div>
+      <SingleContent>
+        <div>
+          <AnimeDetails anime={single}>{props.children}</AnimeDetails>
+          {promo
+            ? promo.map((promo, index) => {
+                return <VideoList episodes={promo} key={index} />
+              })
+            : null}
+          {ep
+            ? ep.map((ep, index) => {
+                return <EpisodeList episode={ep} key={index} />
+              })
+            : null}
+        </div>
+      </SingleContent>
     </>
   )
 }
