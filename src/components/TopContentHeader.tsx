@@ -14,7 +14,7 @@ const StyledHeader = styled.div`
 interface HeaderProps {
   title: string
 }
-const Header: React.FC<HeaderProps> = (props) => {
+const TopContentHeader: React.FC<HeaderProps> = (props) => {
   return (
     <StyledHeader>
       <h2>{props.title}</h2>
@@ -22,4 +22,4 @@ const Header: React.FC<HeaderProps> = (props) => {
   )
 }
 
-export default Header
+export default TopContentHeader

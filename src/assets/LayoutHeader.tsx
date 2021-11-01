@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import Panda from '../public/images/panda.svg'
 import styled from 'styled-components'
-import Link from 'next/link'
 
 const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100vw;
+  max-width: 100vw;
   height: 8vh;
   background: ${(props) => props.theme.dark.layoutHeaderBackground};
 `
@@ -33,9 +33,6 @@ const LayoutHeader: React.FC = () => {
         <Image height={70} src={Panda} alt="sugoi panda" />
         <Label>Sugoi Panda</Label>
       </Logo>
-      <Link href="/single/40834">
-        <a>index</a>
-      </Link>
     </StyledHeader>
   )
 }

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import Header from 'src/components/Header'
+import Header from 'src/components/TopContentHeader'
 import api from 'src/services/api'
 import styled from 'styled-components'
-import TopRecommendations from './TopRecommendations'
+import TopContent from './TopContent'
 
 const AnimeBox = styled.section`
   display: flex;
@@ -55,7 +55,7 @@ const LayoutContent: React.FC<LayoutContentProps> = () => {
       <AnimeBox>
         {!!topAnimes &&
           topAnimes.map((topAnimes, index) => {
-            return <TopRecommendations anime={topAnimes} key={index} />
+            return <TopContent anime={topAnimes} key={index} />
           })}
       </AnimeBox>
 
@@ -63,7 +63,7 @@ const LayoutContent: React.FC<LayoutContentProps> = () => {
       <AnimeBox>
         {!!topMangas &&
           topMangas.map((topMangas, index) => {
-            return <TopRecommendations anime={topMangas} key={index} />
+            return <TopContent anime={topMangas} key={index} />
           })}
       </AnimeBox>
     </>

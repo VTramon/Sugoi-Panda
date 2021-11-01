@@ -1,17 +1,10 @@
 import SingleAnime from 'src/assets/SingleAnime'
 import { GetServerSideProps } from 'next'
 
-interface AnimeProps {
-  title?: string
-  url?: string
-  image?: string
-  mal_id?: number
-}
-
-const Anime: React.FC<AnimeProps> = (props) => {
+const Anime: React.FC = () => {
   return (
     <>
-      <SingleAnime>{props.children}</SingleAnime>
+      <SingleAnime />
     </>
   )
 }

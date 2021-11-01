@@ -6,11 +6,12 @@ import LayoutHeader from './LayoutHeader'
 import SearchBar from './SearchBar'
 import Content from './SearchContent'
 
-const StyledLayout = styled.div`
+export const StyledLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
 `
 
 const List = styled.ol`

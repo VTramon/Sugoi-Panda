@@ -15,6 +15,7 @@ const Image = styled.img`
   height: 370px;
   width: 250px;
   float: left;
+  margin: 10px;
 `
 
 const P = styled.p`
@@ -59,7 +60,7 @@ interface AnimeDetailsProps {
 
 const AnimeDetails: React.FC<AnimeDetailsProps> = (props) => {
   const [genre, setGenre] = useState([])
-  const [tema, setTema] = useState([])
+  const [theme, setTheme] = useState([])
   const [studios, setStudios] = useState([])
 
   const router = useRouter()
@@ -69,7 +70,7 @@ const AnimeDetails: React.FC<AnimeDetailsProps> = (props) => {
     await api.get(`https://api.jikan.moe/v3/anime/${id}`).then((res) => {
       setGenre(res.data['genres'])
       setStudios(res.data['studios'])
-      setTema(res.data['themes'])
+      setTheme(res.data['themes'])
     })
   }
 
@@ -78,33 +79,43 @@ const AnimeDetails: React.FC<AnimeDetailsProps> = (props) => {
   }, [])
   return (
     <Details>
+      <Image src={props.anime.image_url} alt={props.anime.title} />
       <P>
-        <Image src={props.anime.image_url} alt={props.anime.title} />
-        <span>{props.anime.title}</span>
-      </P>
-      <P>
-        <span> Titulo original: {props.anime.title_japanese}</span>
-      </P>
-      <P>
-        <span> Tipo: {props.anime.type}</span>
-      </P>
-      <P>
-        <span> Origem: {props.anime.source}</span>
+        <span>
+          <strong>Titulo:</strong> {props.anime.title}
+        </span>
       </P>
       <P>
         <span>
           {' '}
-          Tema:{' '}
-          {tema
-            ? tema.map((temas) => {
-                return `${temas['name']}`
+          <strong>Titulo original:</strong> {props.anime.title_japanese}
+        </span>
+      </P>
+      <P>
+        <span>
+          {' '}
+          <strong>Tipo:</strong> {props.anime.type}
+        </span>
+      </P>
+      <P>
+        <span>
+          {' '}
+          <strong>Origem:</strong> {props.anime.source}
+        </span>
+      </P>
+      <P>
+        <span>
+          <strong>Tema: </strong>
+          {theme
+            ? theme.map((themes) => {
+                return `${themes['name']}`
               })
             : 'não constão temas'}
         </span>
       </P>
       <P>
         <span>
-          Generos:
+          <strong>Generos:</strong>
           {genre
             ? genre.map((genres) => {
                 return ` ${genres['name']}`
@@ -113,17 +124,24 @@ const AnimeDetails: React.FC<AnimeDetailsProps> = (props) => {
         </span>
       </P>
       <P>
-        <Score>Score: {props.anime.score}</Score>
-      </P>
-      <P>
-        <span> Data: {props.anime.aired?.prop?.to?.year}</span>
-      </P>
-      <P>
-        <span>Episodios: {props.anime.episodes}</span>
+        <Score>
+          <strong>Score:</strong> {props.anime.score}
+        </Score>
       </P>
       <P>
         <span>
-          Studios:
+          {' '}
+          <strong>Data:</strong> {props.anime.aired?.prop?.to?.year}
+        </span>
+      </P>
+      <P>
+        <span>
+          <strong>Episodios:</strong> {props.anime.episodes}
+        </span>
+      </P>
+      <P>
+        <span>
+          <strong>Studios:</strong>
           {studios
             ? studios.map((studio) => {
                 return ` ${studio['name']}`
@@ -132,7 +150,10 @@ const AnimeDetails: React.FC<AnimeDetailsProps> = (props) => {
         </span>
       </P>
       <P>
-        <span>{props.anime.synopsis}</span>
+        <span>
+          <strong>Sinopse: </strong>
+          {props.anime.synopsis}
+        </span>
       </P>
     </Details>
   )
